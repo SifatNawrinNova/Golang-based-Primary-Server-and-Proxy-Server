@@ -1,0 +1,18 @@
+# Number of concurrent requests
+$ConcurrentRequests = 25
+
+# URL to request
+$Url = "localhost:8080/h.txt"
+
+# Loop to start concurrent curl requests
+$processes = @()
+for ($i = 0; $i -lt $ConcurrentRequests; $i++) {
+    $processes += Start-Process -FilePath "curl.exe" -ArgumentList "-I -X GET $Url" -NoNewWindow -PassThru
+}
+
+# Wait for all processes to complete
+$processes | Wait-Process
+
+------------------------------------------------------------------------
+
+curl.exe -v -X POST -F "file=@h.txt" localhost:8081/testt.txt 

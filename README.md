@@ -1,1 +1,1 @@
-# Golang-based-Primary-Server-and-Proxy-Server
+# GoLang-Primary-Server-Proxy-Server
